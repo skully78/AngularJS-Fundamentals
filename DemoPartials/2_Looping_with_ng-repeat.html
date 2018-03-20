@@ -1,8 +1,8 @@
-﻿<div class="container" data-ng-init="names=['Dave','Napur','Heedy','Shriva']">
+﻿<div class="container" data-ng-init="namesArray=['Dave','Napur','Heedy','Shriva', 'Harry']">
     <h3>Looping with the ng-repeat Directive</h3>
     <h4>Data to loop through is initialized using ng-init</h4>
     <ul>
-        <li data-ng-repeat="name in names">{{name}}</li>
+        <li data-ng-repeat="item in namesArray">{{item | uppercase}}</li>
     </ul>
 </div>
 
