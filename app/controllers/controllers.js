@@ -7,11 +7,11 @@ app.controller('CustomersController', function ($scope, customersService) {
         $scope.customers = customersService.getCustomers();
     }
 
-    $scope.insertCustomer = function() {
+    $scope.insertCustomer = function () {
         let firstName = $scope.newCustomer.firstName;
         let lastName = $scope.newCustomer.lastName;
         let city = $scope.newCustomer.city;
-        customersService.insertCustomer(firstName, lastName ,city);
+        customersService.insertCustomer(firstName, lastName, city);
         $scope.newCustomer.firstName = '';
         $scope.newCustomer.lastName = '';
         $scope.newCustomer.city = '';
@@ -39,9 +39,9 @@ app.controller('CustomerOrdersController', function ($scope, $routeParams, custo
         if (customerID > 0) {
             $scope.customer = customersService.getSingleCustomer(customerID);
         }
-    
+
     }
-    
+
 });
 
 app.controller('OrdersController', function ($scope, customersService) {
@@ -60,6 +60,8 @@ app.controller('OrdersController', function ($scope, customersService) {
 //setOrder and orderby across multiple controllers.
 app.controller('OrderChildController', function ($scope) {
 
+    $scope.orderby = 'product';
+    $scope.reverse = false;
     $scope.ordersTotal = 0.00;
 
     init();
@@ -79,6 +81,13 @@ app.controller('OrderChildController', function ($scope) {
             $scope.ordersTotal = total;
         }
 
+    }
+
+    $scope.setOrder = function (orderby) {
+        if (orderby = $scope.orderby) {
+            $scope.reverse = !$scope.reverse;
+        }
+        $scope.orderby = orderby;
     }
 
 });

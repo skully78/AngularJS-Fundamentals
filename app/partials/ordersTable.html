@@ -13,7 +13,7 @@
             <td colspan="4"><strong>No orders</strong></td>
         </tr>
 
-        <tr data-ng-repeat="order in customer.orders">
+        <tr data-ng-repeat="order in customer.orders | orderBy:orderby:reverse">
             <td>
                 {{ order.product }}
             </td>
