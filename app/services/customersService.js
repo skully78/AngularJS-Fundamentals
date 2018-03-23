@@ -13,6 +13,31 @@ app.service('customersService', function () {
         return null;
     }
 
+    this.insertCustomer = function (firstName, lastName, city) {
+        let topID = customers.length + 1;
+        customers.push({
+            id: topID,
+            firstName: firstName,
+            lastName: lastName,
+            city: city
+        });
+    }
+
+    this.deleteCustomer = function (id) {
+        for (let index = customers.length - 1; index >= 0; index--) {
+            if (customers[index].id === id) {
+                customers.splice(index, 1)
+                break;
+            }
+        }
+        /*  for (var i = customers.length - 1; i >= 0; i--) {
+            if (customers[i].id === id) {
+                customers.splice(i, 1);
+                break;
+            }
+        } */
+    }
+
     let customers = [{
             id: 1,
             firstName: 'Lee',

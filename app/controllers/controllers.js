@@ -6,6 +6,21 @@ app.controller('CustomersController', function ($scope, customersService) {
         //console.log('CustomersController');
         $scope.customers = customersService.getCustomers();
     }
+
+    $scope.insertCustomer = function() {
+        let firstName = $scope.newCustomer.firstName;
+        let lastName = $scope.newCustomer.lastName;
+        let city = $scope.newCustomer.city;
+        customersService.insertCustomer(firstName, lastName ,city);
+        $scope.newCustomer.firstName = '';
+        $scope.newCustomer.lastName = '';
+        $scope.newCustomer.city = '';
+    }
+
+    $scope.deleteCustomer = function (id) {
+        //console.log(id);
+        customersService.deleteCustomer(id);
+    }
 });
 
 app.controller('CustomerOrdersController', function ($scope, $routeParams, customersService) {
