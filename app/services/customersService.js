@@ -4,7 +4,16 @@ app.service('customersService', function () {
         return customers;
     }
 
-    var customers = [{
+    this.getSingleCustomer = function (id) {
+        for (let index = 0; index < customers.length; index++) {
+            if (customers[index].id === id) {
+                return customers[index];
+            }
+        }
+        return null;
+    }
+
+    let customers = [{
             id: 1,
             firstName: 'Lee',
             lastName: 'Carroll',

@@ -3,9 +3,30 @@ app.controller('CustomersController', function ($scope, customersService) {
     init();
 
     function init() {
-        console.log('CustomersController');
+        //console.log('CustomersController');
         $scope.customers = customersService.getCustomers();
     }
+});
+
+app.controller('CustomerOrdersController', function ($scope, $routeParams, customersService) {
+
+    $scope.customer = {};
+    $scope.ordersTotal = 0.00;
+
+    init();
+
+    function init() {
+        //console.log('CustomerOrdersController');
+        //Grab customerID off of the route  
+
+        let customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0;
+
+        if (customerID > 0) {
+            $scope.customer = customersService.getSingleCustomer(customerID);
+        }
+    
+    }
+    
 });
 
 app.controller('OrdersController', function ($scope, customersService) {
@@ -13,7 +34,7 @@ app.controller('OrdersController', function ($scope, customersService) {
     init();
 
     function init() {
-        console.log('OrdersController');
+        //console.log('OrdersController');
         $scope.customers = customersService.getCustomers();
     }
 
@@ -36,9 +57,9 @@ app.controller('OrderChildController', function ($scope) {
 
         if ($scope.customer && $scope.customer.orders) {
             let total = 0.00;
-            for (let index = 0; index < $scope.customer.orders; index++) {
+            for (let index = 0; index < $scope.customer.orders.length; index++) {
                 let order = $scope.customer.orders[index];
-                total += order.ordersTotal;
+                total += order.orderTotal;
             }
             $scope.ordersTotal = total;
         }

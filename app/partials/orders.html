@@ -8,7 +8,7 @@
     <div class="col-md-12" data-ng-repeat="customer in customers | orderBy:'lastName'">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a>
+                <a href="#!/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a>
             </div>
             <div class="panel-body">
                 <div data-ng-include="'partials/ordersTable.html'" />

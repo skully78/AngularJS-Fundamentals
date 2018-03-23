@@ -1,12 +1,42 @@
-<table data-ng-controller="OrderChildController">
+<table class="table" data-ng-controller="OrderChildController">
     <thead>
         <tr>
-            <th>Product</th>
+            <th data-ng-click="setOrder('product')">Product</th>
+            <th data-ng-click="setOrder('quantity')">Quantity</th>
+            <th data-ng-click="setOrder('price')">Unit Price</th>
+            <th data-ng-click="setOrder('orderTotal')">Total</th>
         </tr>
     </thead>
     <tbody>
-        <tr data-ng-repeat="order in customers.orders">
-            <td>{{ order.product }}</td>
+
+        <tr data-ng-hide="customer.orders || customer.order.length > 0" class="danger text-center">
+            <td colspan="4"><strong>No orders</strong></td>
         </tr>
+
+        <tr data-ng-repeat="order in customer.orders">
+            <td>
+                {{ order.product }}
+            </td>
+            <td>
+                {{ order.quantity }}
+            </td>
+            <td>
+                {{ order.price | currency }}
+            </td>
+            <td>
+                {{ order.orderTotal | currency }}
+            </td>
+
+        </tr>
+        <tfoot>
+            <tr class="info">
+                <td colspan="3">
+                    &nbsp;
+                </td>
+                <td>
+                    <strong>{{ ordersTotal | currency }}</strong>
+                </td>
+            </tr>
+        </tfoot>
     </tbody>
 </table>
