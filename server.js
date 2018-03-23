@@ -1,6 +1,20 @@
-var express = require('express'),
-    app = express();
+/**
+ *
+ * Install:
+ *      npm install browser-sync
+ *
+ * Run:
+ *      node <server.js>
+ *
+ * This example will create a server using https using the default information & use the `app` directory as the root
+ *
+ */
 
-app.use(express.static(__dirname + ''));
+"use strict";
 
-app.listen(8080)
+var browserSync = require("browser-sync").create();
+
+browserSync.init({
+    server: "./app",
+    watch: true
+});
