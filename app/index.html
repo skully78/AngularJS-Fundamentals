@@ -8,6 +8,10 @@
     <title>SuperCheap</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <base href="/">
+    <style>
+        /* The starting CSS styles for the enter animation */
+
+    </style>
 </head>
 
 <body>
@@ -21,21 +25,30 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li data-ng-class="{'active':getClass('/customers')}">
-                    <a href="#!/customers">Customers</a>
+                    <a href="#!/customers" ng-animate-ref="banner">Customers</a>
                 </li>
                 <li data-ng-class="{'active':getClass('/orders')}">
-                    <a href="#!/orders">Orders</a>
+                    <a href="#!/orders" ng-animate-ref="banner">Orders</a>
                 </li>
             </ul>
 
         </div>
     </nav>
 
-    <div data-ng-view></div>
+    <div data-ng-if="bool" class="myfade">
+        Fade me in out
+    </div>
+    <button data-ng-click="bool=true">Fade In!</button>
+    <button data-ng-click="bool=false">Fade Out!</button>
+
+    <hr>
+
+    <div data-ng-view class="view-animation"></div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-animate.min.js"></script>
     <script src="app.js"></script>
     <script src="controllers/controllers.js"></script>
     <script src="services/customersService.js"></script>
